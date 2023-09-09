@@ -1,16 +1,16 @@
 import {Table} from 'antd';
 import './Table.scss';
 import type {ColumnsType} from 'antd/es/table';
+import {concatCoordinates, markersArray} from 'common/Helpers';
 import {useAppSelector, useAppDispatch} from 'common/Hooks';
 import {IRoute} from 'common/Models';
 import {FC} from 'react';
 import React from 'react';
-import {getPolylines} from 'store/routesSlice';
+import {getPolylines, setMarkers} from 'store/routesSlice';
 
 export const TableComponent: FC = () => {
     const {routes} = useAppSelector((state) => state.routes);
     const dispatch = useAppDispatch();
-    console.log(routes);
 
     const columns: ColumnsType<IRoute> = [
         {
@@ -36,9 +36,9 @@ export const TableComponent: FC = () => {
     ];
 
     const rowSelection = {
-        onChange: (selectedRowKeys: React.Key[], selectedRows: IRoute[]) => {
-            dispatch(getPolylines());
-            console.log(`selectedRowKeys: ${selectedRowKeys}`, 'selectedRows: ', selectedRows);
+        onChange: (_selectedRowKeys: React.Key[], selectedRows: IRoute[]) => {
+            dispatch(setMarkers(markersArray(selectedRows[0].points)));
+            dispatch(getPolylines(concatCoordinates(selectedRows[0].points)));
         },
     };
 
