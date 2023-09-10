@@ -1,13 +1,17 @@
 import {Table} from 'antd';
-import './Table.scss';
+import 'components/Table/Table.module.scss';
 import type {ColumnsType} from 'antd/es/table';
 import {concatCoordinates, markersArray} from 'common/Helpers';
 import {useAppSelector, useAppDispatch} from 'common/Hooks';
 import {IRoute} from 'common/Models';
+import styles from 'components/Table/Table.module.scss';
 import {FC} from 'react';
 import React from 'react';
 import {getPolylines, setMarkers} from 'store/routesSlice';
 
+/**
+ * Компонент отображения таблицы с маршрутами.
+ */
 export const TableComponent: FC = () => {
     const {routes} = useAppSelector((state) => state.routes);
     const dispatch = useAppDispatch();
@@ -44,7 +48,7 @@ export const TableComponent: FC = () => {
 
     return (
         <Table
-            className="Table"
+            className={styles.Table}
             rowSelection={{
                 type: 'radio',
                 ...rowSelection,

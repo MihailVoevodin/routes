@@ -11,6 +11,40 @@ code {
 }
 
 .leaflet-container {
-    min-height: 700px;
-    min-width: 700px;
+    width: 80vh;
+    height: 80vh;
+}
+
+.ant-table table {
+    font-size: 14px;
+    margin: 0 auto;
+}
+
+@media (max-width: 700px) {
+    .leaflet-container {
+        width: 70vh;
+        height: 70vh;
+    }
+}
+
+@media (max-width: 500px) {
+    .leaflet-container {
+        width: 40vh;
+        height: 40vh;
+    }
+    .ant-table table {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 400px) {
+    .ant-table table {
+        font-size: 8px;
+    }
+}
+
+@media (max-width: 360px) {
+    .ant-table table {
+        font-size: 6px;
+    }
 }

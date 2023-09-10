@@ -1,0 +1,39 @@
+.spinnerContainer {
+  top: 50%;
+  position: fixed;
+  z-index: 1000;
+  min-height: 100vh;
+  min-width: 100vw;
+}
+
+.spinner {
+  margin-top: 20px;
+  color: #0000ff;
+}
+
+.text {
+  font-size: 40px;
+  color: #0000ff;
+  margin: 0 auto;
+}
+
+@media (max-width: 1200px) {
+  .spinnerContainer {
+    top: 80%;
+  }
+}
+
+@media (max-width: 700px) {
+  .text {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 400px) {
+  .spinnerContainer {
+    top: 75%;
+  }
+  .text {
+    font-size: 16px;
+  }
+}

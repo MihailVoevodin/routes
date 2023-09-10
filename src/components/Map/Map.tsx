@@ -1,11 +1,12 @@
 import {MAP_CENTER_DEFAULT, ZOOM_DEFAULT} from 'common/Consts';
-import {coordinatesOfCenter} from 'common/Helpers';
 import {useAppSelector} from 'common/Hooks';
-import {Recenter} from 'components/Recenter';
+import {Recenter} from 'components/Recenter/Recenter';
 import React, {FC} from 'react';
-import './Map.scss';
 import {MapContainer, TileLayer, Marker, Popup, Polyline} from 'react-leaflet';
 
+/**
+ * Компонент отображения карты.
+ */
 export const MapComponent: FC = () => {
     const {markers, polyline} = useAppSelector((state) => state.routes);
 
@@ -19,13 +20,13 @@ export const MapComponent: FC = () => {
                 {markers.length > 0 &&
                     markers.map((marker: string, id: number) => (
                         <Marker key={id} position={[+marker[0], +marker[1]]}>
-                            <Popup>{`${id}. ${marker[0]}, ${marker[1]}`}</Popup>
+                            <Popup>{`${id + 1}. ${marker[0]}, ${marker[1]}`}</Popup>
                         </Marker>
                     ))}
                 {polyline.length > 0 && (
                     <>
-                        <Recenter lat={coordinatesOfCenter(polyline)[0]} lng={coordinatesOfCenter(polyline)[1]} coords={markers} />
-                        <Polyline pathOptions={{color: '#0078a8', weight: 5}} positions={polyline} />
+                        <Recenter markers={markers} polyline={polyline} />
+                        <Polyline pathOptions={{color: '#0000ff', weight: 3}} positions={polyline} />
                     </>
                 )}
             </MapContainer>

@@ -1,10 +1,13 @@
 import {IRoute} from 'common/Models';
 import {LatLngExpression} from 'leaflet';
 
-export const MAP_CENTER_DEFAULT: LatLngExpression | undefined = [59.84660399, 30.29496392];
+/** Дефолтные координаты центра карты. */
+export const MAP_CENTER_DEFAULT: LatLngExpression | undefined = [59.85, 30.3];
 
+/** Дефолтный зум карты. */
 export const ZOOM_DEFAULT: number = 15;
 
+/** Массив заданных маршрутов. */
 export const ROUTES: IRoute[] = [
     {
         key: 1,

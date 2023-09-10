@@ -1,0 +1,10 @@
+.errorContainer {
+  font-size: 20px;
+  color: #ff0000;
+}
+
+@media (max-width: 500px) {
+  .errorContainer {
+    font-size: 14px;
+  }
+}
